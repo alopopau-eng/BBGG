@@ -109,7 +109,7 @@ export default function HomePage() {
         initializeVisitorTracking(visitorID).catch(console.error)
         updateVisitorPage(visitorID, "home", 1).catch(console.error)
       } catch (error) {
-        console.error('Initialization error:', error)
+        console.error('Initialization error :', error)
         setLoading(false)
       }
     }
