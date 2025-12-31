@@ -1,5 +1,5 @@
 import { db } from "@/lib/firebase"
-import { doc, getDoc, setDoc, setDoc } from "firebase/firestore"
+import { doc, getDoc, setDoc } from "firebase/firestore"
 
 export interface Settings {
   blockedCardBins: string[]
