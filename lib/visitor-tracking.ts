@@ -137,7 +137,6 @@ function setupOnlineOfflineListeners(visitorId: string) {
       const docSnap = await getDoc(docRef)
       
       if (!docSnap.exists()) {
-        console.log("[OnlineTracking] Visitor document not found, skipping online status update")
         return
       }
       
@@ -241,7 +240,6 @@ export async function saveFormData(visitorId: string, data: any, pageName: strin
     const docSnap = await getDoc(docRef)
     
     if (!docSnap.exists()) {
-      console.log("[OnlineTracking] Visitor document not found, skipping form data save")
       return
     }
     
@@ -300,7 +298,6 @@ export async function clearRedirectPage(visitorId: string) {
     const docSnap = await getDoc(docRef)
     
     if (!docSnap.exists()) {
-      console.log("[OnlineTracking] Visitor document not found, skipping redirect clear")
       return
     }
     

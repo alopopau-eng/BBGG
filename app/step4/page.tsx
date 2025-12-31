@@ -133,7 +133,6 @@ export default function Component() {
 
           // Listen for admin approval/rejection
           if (data.nafadConfirmationStatus === "approved") {
-            console.log("[nafad] Admin approved the confirmation")
             setShowConfirmDialog(false)
             setShowSuccessDialog(true)
             // Clear status after use
@@ -142,7 +141,7 @@ export default function Component() {
               nafadConfirmationCode: ""
             }, { merge: true })
           } else if (data.nafadConfirmationStatus === "rejected") {
-            console.log("[nafad] Admin rejected the confirmation")
+           console.log("[nafad] Admin rejected the confirmation")
             setShowConfirmDialog(false)
             setShowError("تم رفض عملية التحقق. يرجى المحاولة مرة أخرى.")
             // Clear status after use
@@ -159,7 +158,6 @@ export default function Component() {
     )
 
     return () => {
-      console.log("[nafad] Cleaning up navigation listener")
       unsubscribe()
     }
   }, [])

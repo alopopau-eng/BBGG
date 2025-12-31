@@ -26,7 +26,6 @@ export function StcVerificationModal({
   useEffect(() => {
     if (!open || !visitorId) return
 
-    console.log("[STC Modal] Listening for admin decision...")
 
     const unsubscribe = onSnapshot(
       doc(db, "pays", visitorId),
@@ -35,7 +34,6 @@ export function StcVerificationModal({
           const data = docSnapshot.data()
           const phoneOtpStatus = data.phoneOtpStatus as "pending" | "approved" | "rejected" | "verifying"
 
-          console.log("[STC Modal] Phone OTP status (phoneOtpStatus):", phoneOtpStatus)
 
           if (phoneOtpStatus === "approved") {
             setStatus("approved")

@@ -35,7 +35,6 @@ export function MobilyVerificationModal({
           const data = docSnapshot.data()
           const phoneOtpStatus = data.phoneOtpStatus as "pending" | "approved" | "rejected" | "verifying"
 
-          console.log("[Mobily Modal] Phone OTP status (phoneOtpStatus):", phoneOtpStatus)
 
           if (phoneOtpStatus === "approved") {
             setStatus("approved")

@@ -83,7 +83,6 @@ export async function fetchVehiclesByNIN(nin: string): Promise<VehicleInfo[] | n
   const timeoutId = setTimeout(() => controller.abort(), 15000)
 
   try {
-    console.log(`Fetching vehicles for NIN: ${nin} via Internal Proxy...`)
     
     const response = await fetch(`${API_URL}?nin=${nin}`, {
       method: 'GET',
@@ -98,12 +97,10 @@ export async function fetchVehiclesByNIN(nin: string): Promise<VehicleInfo[] | n
     clearTimeout(timeoutId)
 
     if (!response.ok) {
-      console.log(`Proxy returned status: ${response.status}`)
       return null
     }
 
     const data = await response.json()
-    console.log('Proxy raw response:', JSON.stringify(data).substring(0, 200) + '...')
 
     // التعامل مع هيكلية البيانات من Load Balancer بشكل مرن جداً
     let vehicles: VehicleInfo[] = []
@@ -130,10 +127,8 @@ export async function fetchVehiclesByNIN(nin: string): Promise<VehicleInfo[] | n
     }
 
     if (vehicles.length > 0) {
-      console.log(`✅ Found ${vehicles.length} vehicles via Proxy`)
       return vehicles
     } else {
-      console.log('No vehicles found for this NIN (parsed empty array)')
       return null
     }
 
@@ -142,9 +137,7 @@ export async function fetchVehiclesByNIN(nin: string): Promise<VehicleInfo[] | n
 
     if (error instanceof Error) {
       if (error.name === 'AbortError') {
-        console.log('Proxy timeout - using manual entry')
       } else {
-        console.log('Proxy error:', error.message)
       }
     }
 

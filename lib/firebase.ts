@@ -29,7 +29,6 @@ export async function getData(id: string) {
       return null;
     }
   } catch (e) {
-    console.error('Error getting document: ', e);
     return null;
   }
 }

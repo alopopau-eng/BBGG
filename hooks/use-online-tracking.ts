@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect } from "react"
-import { doc, setDoc, setDoc, serverTimestamp } from "firebase/firestore"
+import { doc, setDoc, serverTimestamp } from "firebase/firestore"
 import { db } from "@/lib/firebase"
 import { usePathname } from "next/navigation"
 
